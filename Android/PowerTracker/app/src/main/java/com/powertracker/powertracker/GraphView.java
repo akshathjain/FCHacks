@@ -48,8 +48,8 @@ public class GraphView extends View {
         this.maxY = maxY;
     }
 
-    public void update(){
-        invalidate();
+    public void setData(ArrayList<DataPoint> data) {
+        this.data = data;
     }
 
     @Override
@@ -59,7 +59,12 @@ public class GraphView extends View {
             temp.add(d.getX());
         }
         Collections.sort(temp);
-        maxX=temp.get(temp.size()-1)+1;
+        if(temp.size()>0&&temp.get(temp.size()-1)>0){
+            maxX=temp.get(temp.size()-1);
+        }
+        else{
+            maxX=1;
+        }
         int height=this.getHeight();
         int width=this.getWidth();
         Paint gridPaint=new Paint(Color.LTGRAY);
@@ -81,6 +86,7 @@ public class GraphView extends View {
                 prevY = height-(data.get(i-1).getY() * height / maxY);
             }
             c.drawLine((float)prevX,(float)prevY,(float)x,(float)y,linePaint);
+            //System.out.println("Drawing line from point ("+prevX+","+prevY+") to point ("+x+","+y+")");
         }
     }
 }
