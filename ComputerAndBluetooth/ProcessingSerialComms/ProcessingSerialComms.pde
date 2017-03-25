@@ -38,6 +38,6 @@ void draw(){
     fill(255, 255, 255);
     text("Washing Machine: ", 20, h/4.0);
     text("32 inch LCD TV: ", 20, 3.0 * h / 4.0);
-    text(val1, 500, h/4.0); 
-    text(val2, 500, 3.0 * h / 4.0); 
+    text(val1.substring(0, val1.length() > 0 ? val1.length() - 1 : val1.length()) + " V", 500, h/4.0); 
+    text(val2.substring(0, val2.length() > 0 ? val2.length() - 1 : val2.length()) + " V", 500, 3.0 * h / 4.0); 
 }
