@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Dashboard extends FragmentActivity {
+public class Dashboard extends AppCompatActivity {
 
     private final static int NUM_PAGES=2;
     @Override
@@ -35,7 +35,16 @@ public class Dashboard extends FragmentActivity {
             else{
                 return new DeviceListFragment();
             }
+        }
 
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if(position==0){
+                return "Dashboard";
+            }
+            else{
+                return "Device List";
+            }
         }
 
         @Override
