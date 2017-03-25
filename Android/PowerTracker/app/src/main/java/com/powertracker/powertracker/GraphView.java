@@ -19,6 +19,7 @@ public class GraphView extends View {
 
     private double maxY;
     private double maxX;
+    private double startX;
 
     private ArrayList<DataPoint> data;
 
@@ -50,6 +51,10 @@ public class GraphView extends View {
         this.data = data;
     }
 
+    public void setStartX(double startX) {
+        this.startX = startX;
+    }
+
     @Override
     protected void onDraw(Canvas c){
         ArrayList<Double> temp =new ArrayList();
@@ -74,7 +79,7 @@ public class GraphView extends View {
         }
         Paint linePaint=new Paint(Color.BLACK);
         linePaint.setStrokeWidth(5);
-        for(int i=0;i<data.size();i++){
+        for(int i=(int) startX;i<data.size();i++){
             double x = data.get(i).getX() * width / maxX;
             double y = height-(data.get(i).getY() * height / maxY);
             double prevX=0;

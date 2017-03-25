@@ -63,8 +63,15 @@ public class DeviceListFragment extends Fragment {
                                 tvs.setText("Status: Off");
                             }
                             tvp.setText(df.format(pow2)+" kW");
-                            int per1=(int) (pow1/(pow1+pow2)*100);
-                            int per2=(int) (pow2/(pow1+pow2)*100);
+                            int per1=0;
+                            int per2=0;
+                            try {
+                                per1 = (int) (pow1 / (pow1 + pow2) * 100);
+                                per2 = (int) (pow2 / (pow1 + pow2) * 100);
+                            }
+                            catch(ArithmeticException e){
+
+                            }
                             wmper.setText(per1+"%");
                             tvper.setText(per2+"%");
                         }
