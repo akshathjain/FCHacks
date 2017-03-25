@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class Dashboard extends AppCompatActivity {
         ViewPager pager=(ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter= new PagerAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
+
+
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter {
