@@ -22,15 +22,14 @@ void loop()
 
 {
 
+  delay(1000);
   val1 = analogRead(analogPin1);
   val4 = analogRead(analogPin4);
 
   float voltage1 = val1 * 2 * (5.0 / 1023.0);// read the input pin and convert to voltage
   float voltage4 = val4 / 10 * (5.0 / 1023.0);// read the input pin and convert to voltage
 
-  Serial.print("Analog 1 Voltage: ");             // debug value
-  Serial.println(voltage1); 
-  Serial.print("Analog 4 Voltage: ");             // debug value
+  Serial.println(voltage1);             // debug value
   Serial.println(voltage4);             // debug value
 
 }
