@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Bluetooth could not connect", Toast.LENGTH_SHORT).show();
         }else{
             adapter.startDiscovery();
+            IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+            registerReceiver(discoveryReceiver, filter);
         }
     }
 
@@ -65,4 +68,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        unregisterReceiver(discoveryReceiver);
+    }
 }
